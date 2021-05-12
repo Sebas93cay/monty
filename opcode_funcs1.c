@@ -8,13 +8,22 @@ void push_stack(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	add_dnodeint(stack, atoi(STK.tokens[1]));
+	switch (STK.mode)
+	{
+	case STACK_MODE:
+		add_dnodeint(stack, atoi(STK.tokens[1]));
+		break;
+	case QUEUE_MODE:
+		add_dnodeint_end(stack, atoi(STK.tokens[1]));
+		break;
+	}
 }
 
 void pall_stack(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
 	print_dlistint(*stack);
+	print_dlistint_rev(*stack);
 }
 
 void pint_stack(stack_t **stack,

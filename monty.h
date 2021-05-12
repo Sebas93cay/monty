@@ -42,6 +42,7 @@ typedef struct stack_instance
 	char **tokens;
 	char *line;
 	FILE *file;
+	int mode;
 } stack_instance;
 
 
@@ -51,6 +52,8 @@ extern stack_instance STK;
 
 
 /* Macros */
+#define STACK_MODE 0
+#define QUEUE_MODE 1
 
 
 /*In main file*/
@@ -64,6 +67,21 @@ void pall_stack(stack_t **stack, unsigned int line_number);
 void pint_stack(stack_t **stack, unsigned int line_number);
 void pop_stack(stack_t **stack, unsigned int line_number);
 void swap_stack(stack_t **stack, unsigned int line_number);
+/*opcode_funcs2.c*/
+void add_stack(stack_t **stack, unsigned int line_number);
+void nop_stack(stack_t **stack, unsigned int line_number);
+void sub_stack(stack_t **stack, unsigned int line_number);
+void div_stack(stack_t **stack, unsigned int line_number);
+void mul_stack(stack_t **stack, unsigned int line_number);
+/*opcode_funcs3.c*/
+void mod_stack(stack_t **stack, unsigned int line_number);
+void pchar_stack(stack_t **stack, unsigned int line_number);
+void pstr_stack(stack_t **stack, unsigned int line_number);
+void rotl_stack(stack_t **stack, unsigned int line_number);
+void rotr_stack(stack_t **stack, unsigned int line_number);
+/*opcode_funcs3.c*/
+void stack_stack(stack_t **stack, unsigned int line_number);
+void queue_stack(stack_t **stack, unsigned int line_number);
 
 
 /*misc functions*/
@@ -87,6 +105,7 @@ stack_t *add_dnodeint_end(stack_t **head, unsigned int n);
 void free_dlistint(stack_t *head);
 /*lists_2.c doublelinkedlist Functions */
 int delete_dnodeint_at_index(stack_t **head, unsigned int index);
+size_t print_dlistint_rev(const stack_t *h);
 
 /*test_func.c*/
 void print_words(char **words);

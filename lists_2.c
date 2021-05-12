@@ -40,3 +40,29 @@ int delete_dnodeint_at_index(stack_t **head, unsigned int index)
 	free(tmp_node);
 	return (1);
 }
+
+
+/**
+ * print_dlistint_rev - print a dlistint list
+ * @h: list
+ * Return: returns size of the list
+ */
+size_t print_dlistint_rev(const stack_t *h)
+{
+	int nodes_count = 0;
+
+	if (h == NULL)
+		return (0);
+	while (h->next != NULL)
+		h = h->next;
+	while(h != NULL)
+	{
+		nodes_count++;
+		printf("%d%s", h->n, (h->prev == NULL) ? "\n" : " <- ");
+		h = h->prev;
+	}
+	/* printf("cantidad de nodos : %d\n", nodes_count); */
+	return (nodes_count);
+
+
+}

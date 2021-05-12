@@ -15,7 +15,7 @@ void trav_opcodes(instruction_t *codes, unsigned int line_counter)
 	}
 	if (sucess == 0 && STK.tokens[0] != NULL)
 	{
-		dprintf(2, "L%u: unknown instruction %s\n",
+		fprintf(stderr, "L%u: unknown instruction %s\n",
 			line_counter, STK.tokens[0]);
 		free_stuff();
 		exit(EXIT_FAILURE);

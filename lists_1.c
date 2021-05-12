@@ -17,6 +17,7 @@ size_t print_dlistint(const stack_t *h)
 			printf("%d\n", h->n);
 			h = h->next;
 		}
+		/* printf("cantidad de nodos : %d\n", nodes_count); */
 		return (nodes_count);
 	}
 	return (0);

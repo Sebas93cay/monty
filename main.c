@@ -11,12 +11,24 @@ int main(int argc, char **argv)
 				 {"pint", pint_stack},
 				 {"pop", pop_stack},
 				 {"swap", swap_stack},
+				 {"add", add_stack},
+				 {"nop", nop_stack},
+				 {"sub", sub_stack},
+				 {"div", div_stack},
+				 {"mul", mul_stack},
+				 {"mod", mod_stack},
+				 {"pchar", pchar_stack},
+				 {"pstr", pstr_stack},
+				 {"rotl", rotl_stack},
+				 {"rotr", rotr_stack},
+				 {"stack", stack_stack},
+				 {"queue", queue_stack},
 				 {NULL, NULL}};
 	STK.stack = NULL;
 	STK.line = NULL;
 	STK.tokens = NULL;
 	STK.file = NULL;
-		
+	STK.mode = STACK_MODE;
 
 	if (argc != 2)
 	{
@@ -39,8 +51,11 @@ int main(int argc, char **argv)
 		free_words(STK.tokens);
 		STK.tokens = splitwords(STK.line, ' ');
 		/* print_words(STK.tokens); */
-		if (STK.tokens != NULL)
-			trav_opcodes(codes, line_counter);
+		if (STK.tokens != NULL && STK.tokens[0][0] != '#')
+		{
+			trav_opcodes(codes, line_counter);			
+		}
+
 	}
 	/* print_dlistint(STK.stack); */
 	free_stuff();
@@ -64,9 +79,11 @@ char **splitwords(char *buff, char token)
 			   || buff[i + 1] == '\0'))
 			wordcount++;
 	}
-	if (wordcount > 0)
-		words = malloc(sizeof(*words) * (wordcount + 1));
-	check_malloc((void *)(words));
+	if (wordcount == 0)
+		return (words);
+
+	words = malloc(sizeof(*words) * (wordcount + 1));
+	check_malloc((void *)(words));		
 	i = 0;
 	while (*buff && i < wordcount)
 	{
