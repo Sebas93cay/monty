@@ -61,6 +61,9 @@ void free_stuff();
 /*opcode_funcs1.c*/
 void push_stack(stack_t **stack, unsigned int line_number);
 void pall_stack(stack_t **stack, unsigned int line_number);
+void pint_stack(stack_t **stack, unsigned int line_number);
+void pop_stack(stack_t **stack, unsigned int line_number);
+void swap_stack(stack_t **stack, unsigned int line_number);
 
 
 /*misc functions*/
@@ -76,12 +79,14 @@ char *_strcpy(char *dest, char *src);
 int _strcmp(char *s1, char *s2);
 int _strncmp(char *s1, char *s2, unsigned int n);
 
-/* doublelinkedlist Functions */
+/*lists_1.c doublelinkedlist Functions */
 size_t print_dlistint(const stack_t *h);
 size_t dlistint_len(const stack_t *h);
 stack_t *add_dnodeint(stack_t **head, unsigned int n);
 stack_t *add_dnodeint_end(stack_t **head, unsigned int n);
 void free_dlistint(stack_t *head);
+/*lists_2.c doublelinkedlist Functions */
+int delete_dnodeint_at_index(stack_t **head, unsigned int index);
 
 /*test_func.c*/
 void print_words(char **words);

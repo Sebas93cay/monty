@@ -5,9 +5,12 @@ stack_instance STK;
 int main(int argc, char **argv)
 {
 	size_t line_size = 0;
-	unsigned int line_counter;
+	unsigned int line_counter = 0;
 	instruction_t codes[] = {{"push", push_stack},
 				 {"pall", pall_stack},
+				 {"pint", pint_stack},
+				 {"pop", pop_stack},
+				 {"swap", swap_stack},
 				 {NULL, NULL}};
 	STK.stack = NULL;
 	STK.line = NULL;
@@ -17,14 +20,14 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		dprintf(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
 	STK.file = fopen(argv[1], "r");
 	if (STK.file == NULL)
 	{
-		dprintf(2, "Error: Can't open file %s\n", argv[2]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[2]);
 		free_stuff();
 		exit(EXIT_FAILURE);
 	}
@@ -89,7 +92,7 @@ void check_malloc(void *p)
 {
 	if (p == NULL)
 	{
-		dprintf(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_stuff();
 		exit(EXIT_FAILURE);
 	}
