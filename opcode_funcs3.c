@@ -44,7 +44,7 @@ void pchar_stack(stack_t **stack,
 		exit(EXIT_FAILURE);
 		return;
 	}
-	if ((*stack)->n > 255)
+	if ((*stack)->n < 32 || (*stack)->n > 126)
 	{
 		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
 		free_stuff();
