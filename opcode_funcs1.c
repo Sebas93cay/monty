@@ -97,7 +97,8 @@ void swap_stack(stack_t **stack,
 	}
 	tmp_node = (*stack)->next;
 	(*stack)->next = tmp_node->next;
-	(*stack)->next->prev = (*stack);
+	if ((*stack)->next)
+		(*stack)->next->prev = (*stack);
 	(*stack)->prev = tmp_node;
 	tmp_node->next = (*stack);
 	tmp_node->prev = NULL;
