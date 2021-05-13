@@ -55,7 +55,7 @@ size_t print_dlistint_rev(const stack_t *h)
 		return (0);
 	while (h->next != NULL)
 		h = h->next;
-	while(h != NULL)
+	while (h != NULL)
 	{
 		nodes_count++;
 		printf("%d%s", h->n, (h->prev == NULL) ? "\n" : " <- ");

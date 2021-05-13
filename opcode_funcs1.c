@@ -1,8 +1,13 @@
 #include "monty.h"
 
+/**
+ * push_stack - pushes an element to the stack.
+ * @stack: pointer to pointer to stack
+ * @line_number: line number from file where opcode is
+ * Return: nothing
+ */
 void push_stack(stack_t **stack, unsigned int line_number)
 {
-	
 	if (STK.tokens[1] == NULL || check_if_number(STK.tokens[1]) == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -19,13 +24,27 @@ void push_stack(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * pall_stack - prints all the values on the stack,
+ * starting from the top of the stack.
+ * @stack: pointer to pointer to stack
+ * @line_number: line number from file where opcode is
+ * Return: nothing
+ */
 void pall_stack(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
 	print_dlistint(*stack);
-	print_dlistint_rev(*stack);
+	/* print_dlistint_rev(*stack); */
 }
 
+/**
+ * pint_stack -  prints the value at the top of the stack,
+ * followed by a new line.
+ * @stack: pointer to pointer to stack
+ * @line_number: line number from file where opcode is
+ * Return: nothing
+ */
 void pint_stack(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
@@ -37,9 +56,14 @@ void pint_stack(stack_t **stack,
 		return;
 	}
 	printf("%d\n", (*stack)->n);
-	
 }
 
+/**
+ * pop_stack - removes the top element of the stack.
+ * @stack: pointer to pointer to stack
+ * @line_number: line number from file where opcode is
+ * Return: nothing
+ */
 void pop_stack(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {
@@ -53,6 +77,12 @@ void pop_stack(stack_t **stack,
 	delete_dnodeint_at_index(stack, 0);
 }
 
+/**
+ * swaps_stack - swaps the top two elements of the stack.
+ * @stack: pointer to pointer to stack
+ * @line_number: line number from file where opcode is
+ * Return: nothing
+ */
 void swap_stack(stack_t **stack,
 		__attribute__((unused)) unsigned int line_number)
 {

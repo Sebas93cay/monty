@@ -1,5 +1,15 @@
 #include "monty.h"
 
+/**
+ * trav_opcodes - look for a matching opcode in structure
+ * codes, for the first word in STK.tokens
+ * if a matching opcode is found, the corresponding function
+ * from structure code is executed.
+ * if no matching opcode is found, an error message is printed
+ * @codes: structure with opcodes and its respective fucntions
+ * @line_counter: line number from file
+ * Return: Nothing
+*/
 void trav_opcodes(instruction_t *codes, unsigned int line_counter)
 {
 	int i = 0, sucess = 0;
@@ -22,6 +32,13 @@ void trav_opcodes(instruction_t *codes, unsigned int line_counter)
 	}
 }
 
+/**
+ * check_if_number - check if a string is composed only by
+ * numbers
+ * @str: string
+ * Return: Return 1 if string is composed only by numbers,
+ * 0 otherwise
+ */
 int check_if_number(char *str)
 {
 	if (str == NULL)
@@ -34,6 +51,12 @@ int check_if_number(char *str)
 	return (1);
 }
 
+/**
+ * remove_newline - if last byte in str is '\n', this is
+ * substitured for '\0'
+ * @str: string
+ * Return: nothing
+ */
 void remove_newline(char *str)
 {
 	int len;
@@ -45,6 +68,11 @@ void remove_newline(char *str)
 		str[len - 1] = '\0';
 }
 
+/**
+ * free_words - frees an array of strings
+ * @words: array of strings
+ * Return: nothing
+ */
 void free_words(char **words)
 {
 	int i = 0;

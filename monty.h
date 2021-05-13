@@ -36,6 +36,18 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct stack_instance - global variables during
+ * stack, queues, LIFO, FIFO Holberton project;
+ * @stack: double linked list for the stack or queue
+ * @tokens: array of strings to storage arguments for each opcode
+ * @line: buffer to storage a line readed from file
+ * @file: file to read from
+ * @mode: mode of operation, it value can be STACK_MODE or QUEUE_MODE
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO Holberton project
+ */
 typedef struct stack_instance
 {
 	stack_t *stack;
@@ -57,9 +69,12 @@ extern stack_instance STK;
 
 
 /*In main file*/
+void read_lines(size_t *line_size,
+		unsigned int *line_counter,
+		instruction_t *codes);
 char **splitwords(char *buff, char token);
 void check_malloc(void *p);
-void free_stuff();
+void free_stuff(void);
 
 /*opcode_funcs1.c*/
 void push_stack(stack_t **stack, unsigned int line_number);
