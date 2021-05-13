@@ -45,7 +45,7 @@ int check_if_number(char *str)
 		return (0);
 	for (; *str; str++)
 	{
-		if (*str < '0' || *str > '9')
+		if ((*str < '0' || *str > '9') && *str != '-')
 			return (0);
 	}
 	return (1);
