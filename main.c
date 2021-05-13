@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	STK.file = fopen(argv[1], "r");
 	if (STK.file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[2]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		free_stuff();
 		exit(EXIT_FAILURE);
 	}
