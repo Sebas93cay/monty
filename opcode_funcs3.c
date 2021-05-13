@@ -72,7 +72,7 @@ void pstr_stack(stack_t **stack,
 	node = *stack;
 	while (node != NULL)
 	{
-		if (node->n > 255 || node->n == 0)
+		if (node->n < 32 || node->n > 126 || node->n == 0)
 			break;
 		printf("%c", node->n);
 		node = node->next;
