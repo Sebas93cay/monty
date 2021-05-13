@@ -93,6 +93,9 @@ void rotl_stack(stack_t **stack,
 {
 	stack_t *node = NULL;
 
+	if (stack == NULL || *stack == NULL)
+		return;
+
 	node = *stack;
 	while (node->next != NULL)
 		node = node->next;
@@ -117,7 +120,11 @@ void rotr_stack(stack_t **stack,
 {
 	stack_t *node = NULL;
 
+	if (stack == NULL || *stack == NULL)
+		return;
+
 	node = *stack;
+
 	while (node->next != NULL)
 		node = node->next;
 
