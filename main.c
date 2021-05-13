@@ -61,7 +61,7 @@ void read_lines(size_t *line_size,
 
 	while (getline(&STK.line, line_size, STK.file) > 0)
 	{
-		line_counter++;
+		(*line_counter)++;
 		remove_newline(STK.line);
 		free_words(STK.tokens);
 		STK.tokens = splitwords(STK.line, ' ');
